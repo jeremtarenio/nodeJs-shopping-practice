@@ -1,0 +1,31 @@
+<% include ../includes/header %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <% include ../includes/nav %>
+
+    <main>
+        <form class="product-form" action="/seller/<% if(editing == 'true') { %>edit-product/<% } else { %>add-product/<% } %>" method="POST">
+            <div class="form-control">
+                <label for="title">Title:</label>
+                <% if(editing == 'true') { %>
+                <input type="hidden" name="id" value="<%= product.id %>">
+                <% } %>
+                <input type="text" name="title" id="title" value="<% if(editing == 'true') { %><%= product.title %><% } %>" required>
+
+                <label for="title">Image Url:</label>
+                <input type="text" name="imgUrl" id="imgUrl" value="<% if(editing == 'true') { %><%= product.imgUrl %><% } %>" required>
+                
+                <label for="title">Description:</label>
+                <input type="text" name="desc" id="desc" value="<% if(editing == 'true') { %><%= product.desc %><% } %>" required>
+
+                <label for="title">Price:</label>
+                <input type="number" name="price" id="price" value="<% if(editing == 'true') { %><%= product.price %><% } %>" required>
+            </div>
+
+            <button class="btn" type="submit"><% if(editing == 'true') { %>Update Product<% } else { %>Add Product<% } %></button>
+        </form>
+    </main>
+    <% include ../includes/footer %>

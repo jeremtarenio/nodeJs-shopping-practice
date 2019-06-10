@@ -1,0 +1,18 @@
+<% include ../includes/header %>
+
+</head>
+
+<body>
+    <% include ../includes/nav %>
+    <ul>
+    <% for(var i = 0; i < convertedCart.length; i++) { %>
+        <form action="/cart-delete-item" method="POST">
+        <input type="hidden" name="productId" value="<%= convertedCart[i].id %>">
+            <li><p><%= convertedCart[i].title %> (₱<%= convertedCart[i].price %> x <%= convertedCart[i].qty %>)</p><button type="submit" class="btn">Delete</button></li>
+        </form>
+        
+    <% } %>
+    </ul>
+        <p>Total: ₱<%= cart.totalPrice %></p>
+
+    <% include ../includes/footer %>
